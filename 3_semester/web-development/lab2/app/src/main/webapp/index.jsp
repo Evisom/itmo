@@ -27,7 +27,9 @@
         </div>
         <div class="window-body">
             <div class="controls">
-                <div class="plane"></div>
+                <canvas class="plane" id="plane" width="250" height="250">
+
+                </canvas>
                 <div class="form">
                     <p style="margin-bottom: 8px">Sample text</p>
                     <div class="field-row x">

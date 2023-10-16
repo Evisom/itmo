@@ -7,15 +7,17 @@
 
 <%
     ResultsList results = (ResultsList) getServletContext().getAttribute("resultsList");
-    ArrayList<Result> resultsList = results.getResults();
-    for (int i = 0; i < resultsList.size(); i++) {
-        Result result = resultsList.get(i);
-        String[] resultArray = result.arrayRepresentation();
-        %><tr><%
-        for (int j = 0; j < resultArray.length; j++) {
-            String s = resultArray[j];
-        %><td><%=s%></td><%
+    if (results != null) {
+        ArrayList<Result> resultsList = results.getResults();
+        for (int i = 0; i < resultsList.size(); i++) {
+            Result result = resultsList.get(i);
+            String[] resultArray = result.arrayRepresentation();
+            %><tr><%
+            for (int j = 0; j < resultArray.length; j++) {
+                String s = resultArray[j];
+            %><td><%=s%></td><%
 
-        }%></tr><%
+            }%></tr><%
+        }
     }
 %>

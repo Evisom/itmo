@@ -5,13 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c805f99-4b22-46e2-85af-8478ed6e075c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/model/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/model/ResultsList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/jsp/author.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/jsp/error.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/jsp/row.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/jsp/table.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/webapp/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1-2_semester/databases/lab1/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../../../1-2_semester/databases/lab1/main.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1-2_semester/opd/opcode-decoder/Table.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1-2_semester/opd/opcode-decoder/input.txt" beforeDir="false" />
@@ -33,11 +26,9 @@
       <change beforePath="$PROJECT_DIR$/../../../1-2_semester/prog/lab567/server/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1-2_semester/prog/lab567/server/src/main/server/Server.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/controller/AreaCheckServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/controller/AreaCheckServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/controller/ControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/controller/ControllerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/model/Coordinates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/404.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/jsp/table.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/jsp/table.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/webapp/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/static/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,6 +61,7 @@
       <list>
         <option value="Class" />
         <option value="Jsp File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -151,7 +143,7 @@
       <workItem from="1696022062451" duration="1910000" />
       <workItem from="1697372874377" duration="15089000" />
       <workItem from="1697395488406" duration="24926000" />
-      <workItem from="1697474135788" duration="9155000" />
+      <workItem from="1697474135788" duration="15808000" />
     </task>
     <servers />
   </component>

@@ -16,7 +16,7 @@ body {
 }
 
 .window {
-    width: 70%;
+    width: 700px;
     min-height: 350px;
     margin:auto;
 }
@@ -33,6 +33,7 @@ body {
     display: none;
     position: absolute;
     width: 256px;
+    min-height: unset;
     height: 100px;
     z-index: 9999;
 }
@@ -51,9 +52,9 @@ ul {
     width: 100%;
     margin: auto;
 }
-
-.plane {
-    width: 50%;
+.table {
+    max-height: 300px;
+    overflow: scroll;
 }
 
 .form {
@@ -66,4 +67,10 @@ ul {
 
 #error {
     display: none;
+}
+
+canvas {
+    height: 256px;
+    width: 256px;
+    padding: 16px;
 }
