@@ -14,12 +14,19 @@ import java.io.PrintWriter;
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        System.out.println("!@!");
         request.getRequestDispatcher("/index.jsp").forward(request, response);
+
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/AreaCheck").forward(request, response);
+        String x = request.getParameter("x");
+        String y = request.getParameter("y");
+        String r = request.getParameter("r");;
+        if (x != null & y != null & r != null) {
+            request.getRequestDispatcher("/AreaCheck").forward(request, response);
+        } else {
+            request.getRequestDispatcher("/jsp/table.jsp").forward(request, response);
+        }
     }
 
 }
