@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright The WildFly Authors
+  ~ SPDX-License-Identifier: Apache-2.0
+  -->
+<!-- Hibernate Search ORM Mapper - Coordination through outbox-polling:
+     Hibernate ORM integration using outbox polling as coordination strategy
+     for automatic indexing -->
+<module name="org.hibernate.search.mapper.orm.coordination.outboxpolling" xmlns="urn:jboss:module:1.9">
+
+    <resources>
+        <resource-root path="hibernate-search-mapper-orm-coordination-outbox-polling-orm6-6.2.1.Final.jar"/>
+    </resources>
+
+    <dependencies>
+        <module name="jakarta.persistence.api"/>
+        <module name="jakarta.transaction.api"/>
+        <module name="org.jboss.logging"/>
+        <module name="org.hibernate"/>
+        <module name="org.hibernate.search.engine" export="true"/>
+        <module name="org.hibernate.search.mapper.pojo" export="true"/>
+        <module name="org.hibernate.search.mapper.orm" export="true"/>
+        <module name="org.apache.avro"/>
+    </dependencies>
+</module>

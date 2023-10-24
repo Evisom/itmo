@@ -26,8 +26,9 @@
       <change beforePath="$PROJECT_DIR$/../../../1-2_semester/prog/lab567/server/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../1-2_semester/prog/lab567/server/src/main/server/Server.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/model/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/model/Result.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/jsp/table.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/jsp/table.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/webapp/jsp/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/jsp/error.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/webapp/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/webapp/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/webapp/static/js/script.js" afterDir="false" />
     </list>
@@ -143,7 +144,7 @@
       <workItem from="1696022062451" duration="1910000" />
       <workItem from="1697372874377" duration="15089000" />
       <workItem from="1697395488406" duration="24926000" />
-      <workItem from="1697474135788" duration="15808000" />
+      <workItem from="1697474135788" duration="25593000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+
+<installation xmlns="urn:jboss:galleon:provisioning:3.0">
+    <feature-pack location="wildfly-preview@maven(org.jboss.universe:community-universe):current#30.0.0.Beta1">
+        <packages>
+            <include name="docs.examples.configs"/>
+        </packages>
+    </feature-pack>
+    <options>
+        <option name="jboss-fork-embedded" value="true"/>
+    </options>
+</installation>

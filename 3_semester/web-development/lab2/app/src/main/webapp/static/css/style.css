@@ -53,7 +53,7 @@ ul {
     margin: auto;
 }
 .table {
-    max-height: 300px;
+    height: 300px;
     overflow: scroll;
 }
 
@@ -72,5 +72,11 @@ ul {
 canvas {
     height: 256px;
     width: 256px;
-    padding: 16px;
+    margin: 16px;
+    cursor: crosshair;
+}
+
+.error-outline {
+    outline: dashed;
+    outline-color: red;
 }

@@ -27,14 +27,14 @@
         </div>
         <div class="window-body">
             <div class="controls">
-                <canvas class="plane" id="plane" width="250" height="250">
+                <canvas class="plane" id="plane" width="256" height="256">
 
                 </canvas>
                 <div class="form">
                     <p style="margin-bottom: 8px">Sample text</p>
                     <div class="field-row x">
                         <label for="x">X:</label>
-                        <input id="x" type="text" placeholder="from -3 to 3" />
+                        <input maxlength="8" id="x" type="text" placeholder="from -3 to 3" />
                     </div>
                     <div class="field-row y">
                         <label for="x">Y:</label>

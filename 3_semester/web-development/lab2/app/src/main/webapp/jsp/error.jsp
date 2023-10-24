@@ -8,5 +8,6 @@
     </div>
     <div class="window-body">
         <h4>Error!</h4>
+        <p id="error-msg"></p>
     </div>
 </div>

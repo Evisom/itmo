@@ -41,7 +41,7 @@ public class Result {
 
     private boolean graph3 () {
         if (this.x <= 0 & this.y <= 0) {
-            return (this.y <= (-0.5 * this.r - this.x)) & (x > (-0.5 * this.r - this.y));
+            return (this.y >= -x - 0.5*this.r ) & (this.x >= x - 0.5*this.r);
         } else {
             return false;
         }

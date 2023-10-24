@@ -1,12 +1,9 @@
 window.onload = function () {
 
-    $.ajax({
-        type: 'post',
-        url: './',
-        success: (res) => {
-            $("#results").html(res)
-        }
-    })
+    const error = (msg) => {
+        $("#error").css("display", "block")
+        $("#error-msg").html(msg)
+    }
 
     let point = {
         x: null,
@@ -14,6 +11,14 @@ window.onload = function () {
         r: null
     }
     point.r = $("#r option:selected").val()
+    $('#x').on('input propertychange', ()=>{
+        $(".field-row.x").removeClass("error-outline")
+    })
+    $("#r").change(function () {
+        drawPlane()
+        point.r = $("#r option:selected").val()
+        $(".field-row.r").removeClass("error-outline")
+    });
 
     $("#info").on("click", () => {
         $("#author").css("display", "block")
@@ -33,14 +38,31 @@ window.onload = function () {
     $(document).on('click', '.y-btn', function (e) {
         console.log($(this).text())
         point.y = $(this).text()
+        $(".field-row.y").removeClass("error-outline")
     });
     $("#check").on('click', () => {
         point.x = $("#x").val()
         point.r = $("#r option:selected").val()
         console.log(point)
-        if (point.x != null & point.y != null & point.r != null) {
+        if (point.x != null && point.y != null && point.r != null && -3 <= point.x && 3>= point.x && point.x !== "" && $.isNumeric(point.x)) {
             req(point)
-        }else{
+        }else if (point.x === "" || point.x === null){
+            error("X is not set!")
+            $(".field-row.x").addClass("error-outline")
+        } else if (point.y === null) {
+            error("Y is not set!")
+            $(".field-row.y").addClass("error-outline")
+        } else if (point.r === null) {
+            error("R is not set!")
+            $(".field-row.r").addClass("error-outline")
+        } else if (!$.isNumeric(point.x)){
+            error("X is not valid!")
+            $(".field-row.x").addClass("error-outline")
+        } else if (!(-3 <= point.x && point.x <= 3 )){
+            error("X is not valid!")
+            $(".field-row.x").addClass("error-outline")
+        } else{
+            console.log("undefined error!")
             $("#error").css("display", "block")
         }
     })
@@ -59,7 +81,7 @@ window.onload = function () {
                 error: function (xhr, status, error) {
                     // Handle errors
                     console.error("Error: " + error);
-                    $("#error").css("display", "block")
+                    error("Server error!")
                 }
             });
 
@@ -232,10 +254,6 @@ window.onload = function () {
 
 // Function to get coordinates on click
     function getCoordinates(event) {
-
-
-
-
             if (click >= colors.length) {
                 click = 0
             }
@@ -243,9 +261,10 @@ window.onload = function () {
             const rect = canvas.getBoundingClientRect();
             const x = event.clientX - rect.left - canvas.width / 2;
             const y = canvas.height / 2 - (event.clientY - rect.top);
+
             console.log(x, y)
             ctx.beginPath()
-            ctx.arc(event.clientX - rect.left, event.clientY - rect.top, 4, 0, 2 * Math.PI)
+            ctx.arc(event.clientX-rect.left, event.clientY-rect.top, 2, 0, 2 * Math.PI)
             ctx.fillStyle = colors[click]
             ctx.fill()
             click++
@@ -262,4 +281,5 @@ window.onload = function () {
 
     canvas.addEventListener("click", getCoordinates);
     drawPlane();
+    req()
 }
