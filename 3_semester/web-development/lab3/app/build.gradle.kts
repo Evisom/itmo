@@ -27,8 +27,7 @@ dependencies {
     implementation("com.google.guava:guava:32.1.1-jre")
 
 
-
-
+    implementation("javax.faces:javax.faces-api:2.3-pfd")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

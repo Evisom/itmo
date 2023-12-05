@@ -18,12 +18,17 @@
         </div>
     </div>
     <div class="window-body">
-        <h:selectOneMenu value = "#{userData.data}">
-            <f:selectItem itemValue = "1" itemLabel = "Item 1" />
-            <f:selectItem itemValue = "2" itemLabel = "Item 2" />
-        </h:selectOneMenu>
-        <h:inputText value = "Hello World!" />
-        <h:commandLink value = "Page 1" action = "page1" />
+        <h:form>
+            <h:selectOneMenu >
+                <f:selectItem  />
+                <f:selectItem  />
+            </h:selectOneMenu>
+            <h:inputText />
+            <h:commandLink value = "Page 1" action = "page1" />
+            #{Record.x}
+        </h:form>
+
+
     </div>
 </div>
 </body>
