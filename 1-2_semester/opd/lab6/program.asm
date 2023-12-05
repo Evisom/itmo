@@ -1,0 +1,90 @@
+ORG 0x0
+V0: WORD $DEFAULT
+    WORD 0x180
+V1: WORD $DEFAULT
+    WORD 0x180
+V2: WORD $DEV2
+    WORD 0x180
+V3: WORD $DEV3
+    WORD 0x180
+V4: WORD $DEFAULT
+    WORD 0x180
+V5: WORD $DEFAULT
+    WORD 0x180
+V6: WORD $DEFAULT
+    WORD 0x180
+V7: WORD $DEFAULT
+    WORD 0x180
+
+DEFAULT: IRET
+
+ORG 0x20
+INIT:
+    DI
+    LD #0xA
+    OUT 0x5
+    LD #0xB
+    OUT 0x7
+    CLA
+    OUT 0x1
+    OUT 0x3
+    OUT 0xB
+    OUT 0xE
+    OUT 0x12
+    OUT 0x16
+    OUT 0x1A
+    OUT 0x1E
+    EI
+    JUMP MAIN
+
+MAIN:
+    LD X
+    DEC
+    CALL IS_IN_RANGE
+    ST X
+    JUMP MAIN
+
+DEV3:
+    LD X
+    NEG
+    ST X
+    ADD X
+    ADD X
+    ADD X
+    ADD X
+    ADD X
+    DEC
+    OUT 6
+    HLT
+    IRET
+
+IS_IN_RANGE:
+    CMP MAX_RANGE
+    BEQ RETURN_RANGE
+    BGE RETURN_MAX
+    CMP MIN_RANGE
+    BGE RETURN_RANGE
+    RETURN_MAX:
+        LD MAX_RANGE
+    RETURN_RANGE:
+        RET
+
+
+ORG 0x4D
+X: WORD 0x15
+TEMP: WORD 0x0000
+MAX_RANGE: WORD 0x15
+MIN_RANGE: WORD 0xFFEA
+
+DEV2:
+    IN 0x4
+    SXTB
+    NEG
+    ST TEMP
+    LD X
+    ADD TEMP
+    ADD TEMP
+    ADD TEMP
+    ST X
+    HLT
+    IRET
