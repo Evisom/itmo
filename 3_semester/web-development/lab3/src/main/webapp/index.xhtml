@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <meta name="viewport" content="initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html" />
+    <link rel="stylesheet" href="https://unpkg.com/7.css"/>
+    <h:outputStylesheet library="css" name="main.css" />
+    <title>shishmintsev d v</title>
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+        }
+
+        body {
+            /*background-image: url(#{resource['images/bg.jpg']});*/
+            background-image: url("https://e0.pxfuel.com/wallpapers/375/217/desktop-wallpaper-windows-7-home-basic-background-windows-7-ultimate.jpg");
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .wrapper {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .status-bar {
+            margin-top: 16px;
+            border-top: 1px solid black;
+        }
+        .clock {
+            text-align: center;
+            padding: 16px 0;
+            font-size: 24px;
+        }
+
+        .main-link {
+            padding: 16px;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+    </style>
+
+</h:head>
+
+<h:body>
+    <div class="wrapper">
+
+        <div class="window active" style="max-width: 600px">
+
+            <div class="title-bar">
+                <div class="title-bar-text">Лабораторная работа №3</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+
+            <div class="window-body has-space">
+                <div class="clock" id="clock"></div>
+                <p>До обновления времени:</p>
+                <div role="progressbar" class="animate">
+                    <div id="progressbar"></div>
+                </div>
+                <a href="./main.xhtml" class="main-link">Потыкать кнопочки</a>
+                <div class="status-bar">
+                    <p class="status-bar-field">Шишминцев Дмитрий Владимирович</p>
+                    <p class="status-bar-field">P3214</p>
+                    <p class="status-bar-field">Вариант: 2345678</p>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+<script>
+    // 8 sec
+    // 800
+    // 0.125%
+    let i = 800
+    setInterval(() => {
+        if (i >= 800) {
+            let date = new Date()
+            $("#clock").html(date.getHours() + ":" + date.getMinutes()+":" + date.getSeconds())
+            i = 0
+        } else {
+            i++
+        }
+        $("#progressbar").css("width", 0.125*i+"%");
+    }, 10)
+
+</script>
+</h:body>
+</html>

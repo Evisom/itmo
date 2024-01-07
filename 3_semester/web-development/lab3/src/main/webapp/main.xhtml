@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <meta name="viewport" content="initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <link rel="stylesheet" href="https://unpkg.com/7.css"/>
+    <h:outputStylesheet library="css" name="main.css"/>
+    <title>shishmintsev dv</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+</h:head>
+<style>
+    .param-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+
+    }
+
+    .param-row a {
+        margin-right: 4px;
+    }
+
+    .param-row p {
+        margin-right: 8px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .table {
+        height: 150px;
+        overflow: scroll;
+    }
+</style>
+<h:body>
+
+
+    <div class="window active" style="max-width: 600px">
+
+        <div class="title-bar">
+            <div class="title-bar-text">Лабораторная работа №3</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="window-body has-space">
+            <div class="graph">
+                <canvas id="graph" width="400" height="400" style="border:1px solid #000000;">
+                    Your browser does not support the canvas element.
+                </canvas>
+            </div>
+
+
+            <h:form id="choose-form">
+                <div class="param-row">
+                    <p>R:</p>
+                    <h:commandLink class="r-select" actionListener="#{selectRBean.toggleSelected1}" render="@form">
+                        <f:ajax execute="r-select" render="@form"/>
+                        1
+                    </h:commandLink>
+                    <h:commandLink class="r-select" actionListener="#{selectRBean.toggleSelected2}" render="@form">
+                        <f:ajax execute="r-select" render="@form"/>
+                        2
+                    </h:commandLink>
+                    <h:commandLink class="r-select" actionListener="#{selectRBean.toggleSelected3}" render="@form">
+                        <f:ajax execute="r-select" render="@form"/>
+                        3
+                    </h:commandLink>
+                    <h:commandLink class="r-select" actionListener="#{selectRBean.toggleSelected4}" render="@form">
+                        <f:ajax execute="r-select" render="@form"/>
+                        4
+                    </h:commandLink>
+                    <h:commandLink class="r-select" actionListener="#{selectRBean.toggleSelected5}" render="@form">
+                        <f:ajax execute="r-select" render="@form"/>
+                        5
+                    </h:commandLink>
+                    <h:message for="r-select" id="r-select-error" class="error active"/>
+                </div>
+                <div class="param-row">
+                    <p>Y:</p>
+                    <h:inputText id="y-select" value="#{selectYBean.value}" size="27" a:placeholder="[-3;5]"
+                                 validator="#{selectYBean.validateSelectY}">
+                        <f:validateLongRange minimum="-3" maximum="5"/>
+                        <f:ajax execute="y-select" render="@form"/>
+                    </h:inputText>
+                    <h:message id="y-select-error" for="y-select" class="error active"/>
+                </div>
+                <div class="param-row">
+                    <p>X:</p>
+                    <h:selectOneMenu id="x-select" value="#{selectXBean.value}"
+                                     validator="#{selectXBean.validateSelectX}">
+                        <f:selectItem itemValue="-3" itemLabel="-3"/>
+                        <f:selectItem itemValue="-2" itemLabel="-2"/>
+                        <f:selectItem itemValue="-1" itemLabel="-1"/>
+                        <f:selectItem itemValue="0" itemLabel="0"/>
+                        <f:selectItem itemValue="1" itemLabel="1"/>
+                        <f:selectItem itemValue="2" itemLabel="2"/>
+                        <f:selectItem itemValue="3" itemLabel="3"/>
+                        <f:selectItem itemValue="4" itemLabel="4"/>
+                        <f:selectItem itemValue="5" itemLabel="5"/>
+                        <f:validateRequired/>
+                        <f:ajax execute="@this" render="@form"/>
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="param-row">
+                    <h:commandButton id="submit-button" value="Check">
+                        <f:ajax execute="@form" listener="#{checkAreaResultsBean.newResult(selectXBean.value,
+                                        selectYBean.value, selectRBean.value)}" render="@form result-table"/>
+                    </h:commandButton>
+                </div>
+
+
+            </h:form>
+
+            <div class="param-row">
+                <h:form>
+                    <input type="hidden" name="clear" value="1"/>
+                    <h:commandButton id="clear-table" value="Clear table">
+                        <f:ajax execute="@form" listener="#{checkAreaResultsBean.clearResults()}"/>
+                    </h:commandButton>
+
+                </h:form>
+
+                <a href="./index.xhtml" class="main-link">Главная страница</a>
+            </div>
+
+            <h:form id="graphSelect">
+                <h:inputHidden id="graph-x" value="#{selectGraphBean.x}"/>
+                <h:inputHidden id="graph-y" value="#{selectGraphBean.y}"/>
+
+                <p:remoteCommand name="updateBeanValues" update="graph-x graph-y result-table choose-form"
+                                 action="#{checkAreaResultsBean.newResult(selectGraphBean.x, selectGraphBean.y, selectRBean.getValue())}"/>
+            </h:form>
+
+<div class="table">
+    <h:dataTable id="result-table" value="#{checkAreaResultsBean.results}" var="result">
+        <h:column>
+            <f:facet name="header">X</f:facet>
+            #{result.x}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Y</f:facet>
+            #{result.y}
+        </h:column>
+        <h:column>
+            <f:facet name="header">R</f:facet>
+            #{result.r}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Result</f:facet>
+            #{result.result ? "OK" : "FAIL"}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Executed at</f:facet>
+            <h:outputText converter="localDateTimeConverter" value="#{result.executedAt}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Execution time</f:facet>
+            #{result.execTime}
+        </h:column>
+    </h:dataTable>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+        let R = undefined
+        const k = 30
+        const drawPoint = (x, y, r, result) => {
+            console.log(x, y, r, result)
+            drawDot(x, y, r, result)
+        }
+
+
+        $(document).on('click', '.r-select', function (e) {
+            R = Number($(this).html())
+
+            renderGraph(k * R)
+
+        });
+
+        const canvas = document.getElementById('graph');
+        const renderGraph = (R) => {
+            console.log("GRAPH RENDERED")
+            if (canvas.getContext) {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+
+                ctx.fillStyle = '#3496fb';
+
+                ctx.beginPath();
+
+                // Draw rect
+                ctx.rect(centerX - R / 2, centerY, R / 2, -R);
+                ctx.fill();
+
+                // Draw circle
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, R, 0, 0.5 * Math.PI);
+                ctx.fill()
+
+                // Draw triangle
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(centerX - R / 2, centerY);
+                ctx.lineTo(centerX, centerY + R);
+                ctx.lineTo(centerX, centerY);
+                ctx.fill();
+
+                // Draw X Axis
+                ctx.beginPath();
+                ctx.moveTo(0, centerY);
+                ctx.lineTo(canvas.width, centerY);
+                ctx.stroke();
+
+                // Draw Y Axis
+                ctx.beginPath();
+                ctx.moveTo(centerX, 0);
+                ctx.lineTo(centerX, canvas.height);
+                ctx.stroke();
+                ctx.strokeColor = 'black';
+
+            }
+        }
+
+        const convertToGraph = (c, r) => {
+            c.y -= 13.5
+            return {
+                x: c.x * k + (canvas.width / 2),
+                y: -1 * (c.y * k + (canvas.height / 2))
+            }
+        }
+        const convertFromGraph = (c, r) => {
+            return {
+                x: (c.x - (canvas.width / 2)) / k,
+                y: (c.y - (canvas.height / 2)) / k * (-1)
+
+            }
+        }
+
+        const drawDot = (x, y, r, res) => {
+            const ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            let c = convertToGraph({x: x, y: y}, r)
+            console.log(c)
+            ctx.moveTo(c.x, c.y)
+            ctx.arc(c.x, c.y, 3, 0, 2 * Math.PI)
+            if (res) {
+                ctx.fillStyle = 'green'
+            } else {
+                ctx.fillStyle = 'red'
+            }
+            ctx.fill()
+        }
+
+        function getMousePos(evt) {
+            var rect = canvas.getBoundingClientRect();
+            // console.log(evt.clientX - rect.left, evt.clientY - rect.top)
+            // console.log(convertFromGraph( convertToGraph( {x: evt.clientX - rect.left, y: evt.clientY - rect.top},R) ,R))
+            // console.log(convertFromGraph( {x: evt.clientX - rect.left, y: evt.clientY - rect.top},R))
+            const c = {
+                x: Math.round(evt.clientX - rect.left - (canvas.width / 2)) / (k),
+                y: Math.round(evt.clientY - rect.top - (canvas.height / 2)) * -1 / (k)
+            }
+            document.getElementById("graphSelect:graph-x").value = c.x.toFixed(2);
+            document.getElementById("graphSelect:graph-y").value = c.y.toFixed(2);
+            updateBeanValues()
+        }
+
+        canvas.addEventListener('click', (e) => {
+            getMousePos(e)
+        });
+
+        let p = 0
+        setInterval(() => {
+            const res = $('tbody tr:first-child');
+
+            var x = Number(res.find('td').eq(0).text());
+            var y = Number(res.find('td').eq(1).text());
+            var r = Number(res.find('td').eq(2).text());
+            var result = res.find('td').eq(3).text();
+            var et = res.find('td').eq(5).text();
+
+            if (p !== et) {
+                drawPoint(x, y, r, result.includes('OK'))
+            }
+            p = et
+
+        }, 500)
+
+
+        setTimeout(() => {
+            renderGraph(30)
+        }, 500)
+
+
+    </script>
+
+    <h:outputScript>
+        <ui:repeat var="loadedResults" value="#{checkAreaResultsBean.results}">
+            <!--            drawPoint('#{loadedResults.x}', '#{loadedResults.y}', '#{loadedResults.r}', '#{loadedResults.result}');-->
+        </ui:repeat>
+    </h:outputScript>
+</h:body>
+</html>
