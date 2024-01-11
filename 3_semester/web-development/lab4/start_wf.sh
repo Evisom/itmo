@@ -1,0 +1,1 @@
+../wildfly/bin/standalone.sh -Djboss.http.port=8001
